@@ -1,0 +1,186 @@
+/*@import "function.css";*/
+/*引入css文件的一种方式*/
+
+
+/*display: inline-block;兼容ie6-7的写法*/
+/*display: inline-block;
+*display: inline;
+*zoom:1;
+*/
+/*默认都不兼容ie6-7*/
+.clear {
+	zoom: 1;
+}
+.clear:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+/*
+clear
+清除浮动!
+*/
+
+.ib{
+	display: inline-block;
+	+display: inline;
+	+zoom:1;
+}
+@define-mixin ib{
+	display: inline-block;
+	+display: inline;
+	+zoom:1;
+}
+/*inline-block*/
+.ibc>*{
+	display: inline-block;
+	+display: inline;
+	+zoom:1;
+}
+@define-mixin ibchild{
+	display: inline-block;
+	+display: inline;
+	+zoom:1;
+}
+/*inline-block-child*/
+/*
+兼容ie6-7的inline-block
+在ie6-7使其变成inline dom
+最后利用zoom来触发layout..使inline支持宽高..
+*/
+.udCenter{
+	text-align: center;
+	.c{
+		vertical-align: middle;
+	}
+	.i{
+		display: inline-block;
+		+display: inline;
+		+zoom:1;
+		vertical-align: middle;
+		width: 0;
+		height: 100%;
+	}
+}
+/*
+up down Center
+内容上下左右居中!
+*/
+.dom-justify{
+	text-align: justify;
+	text-align-last: justify;
+	&>*{
+		display: inline-block;
+		**display: inline;
+		**zoom: 1;
+		text-align: center;
+		-ms-text-align-last: center;
+		text-align-last: center;
+	}
+}
+/*
+dom-justify
+dom元素两端对齐!
+*/
+
+.df{
+	display: table;
+	&>*{
+		display: table-cell;
+	}
+}
+/*
+dom full
+平均填充慢整个子节点(一行)
+*/
+.df{
+	display: table;
+	&>*{
+		display: table-row;
+		&>*{
+			display: table-cell;
+		}
+	}
+}
+/*
+dom full
+平均填充慢整个子节点(多行)
+*/
+
+
+/*
+@define-mixin mixin_name $arg1, $arg2 {...}
+@mixin mixin_name pass_arg1, pass_arg2;
+
+@define-mixin polka $size, $dot, $fz, $accent{
+    background: $fz;
+    background-image:
+    	radial-gradient($accent $dot, transparent 0),
+    	radial-gradient($accent $dot, transparent 0);
+    background-size: $size $size;
+    background-position: 0 0, $size/2 $size/2;
+}
+
+body{
+@mixin polka 10px ,30% ,#655 ,tan;
+}
+创建波点背景
+*/
+
+/*
+三角形开始咯~~~
+Triangle 三角形
+direction 方向
+mainColor 三角形的颜色
+mainWidth 主要宽度
+childWidth 次要宽度
+*/
+@define-mixin triangle $direction, $mainColor, $mainWidth, $childWidth{
+	width:0;
+    height:0;
+    @if $direction == top {
+    border-left:$childWidth solid transparent;
+    border-right:$childWidth solid transparent;
+	border-bottom:$mainWidth solid $mainColor;
+	}@else{
+		@if $direction == bottom {
+			border-left:$childWidth solid transparent;
+			border-right:$childWidth solid transparent;
+			border-top:$mainWidth solid $mainColor;
+		}@else{
+			@if $direction == left {
+				border-top:$childWidth solid transparent;
+				border-bottom:$childWidth solid transparent;
+				border-right:$mainWidth solid $mainColor;
+			}@else{
+				border-top:$childWidth solid transparent;
+				border-bottom:$childWidth solid transparent;
+				border-left:$mainWidth solid $mainColor;
+			}
+		}
+	}
+}
+/*
+body{
+@mixin triangle  top ,10px ,#655 ,10px;
+}
+demo
+*/
+
+/*position: absolute;定位*/
+@define-mixin position $client, $width, $height{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+	@if $client == pc{
+		margin:calc($height / -2) 0 0 calc($width / -2);
+	}@else{
+		transform:translate(-50%,-50%)
+	}
+}
+/*
+dome
+body{
+	@mixin position pc, 50px, 50px;
+}
+*/

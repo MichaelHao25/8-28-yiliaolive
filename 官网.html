@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit">
+	<title>document</title>
+	<link rel="stylesheet" href="css/public.css" />
+</head>
+
+<body>
+
+	<div class="header">
+		<div class="clear w">
+			<a href="#" class="brand fl" style="background-image: url(img/9b118bfa09c1157139a551759a3de904-170+62.png);">
+			</a>
+			<div class="nav fl">
+				<div class="item fl">
+					<a href="./官网.html">首页</a>
+				</div>
+				<div class="item fl">
+					<a href="./官网-关于我们.html">关于我们</a>
+				</div>
+				<div class="item fl">
+					<a href="./官网-联系我们.html">联系我们</a>
+				</div>
+				<div class="item fl">
+					<a href="./官网-j加入我们.html">加入我们</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="main">
+		<div class="index-banner" style="background-image: url(img/db970a5e96f922c2b411897e3e54ad69-1920+710.jpg);">
+			<div class="content">
+				<div class="qrcode">
+					<img src="img/915077bb75a88ef6efc73aa91eae5fdc-145+145.jpg" alt="">
+				</div>
+				<div class="download-btn-group">
+					<a href="#">
+						<span>iOS下载</span>
+					</a>
+					<a href="#">
+						<span>Android下载</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="happy mb50">
+			<h3 class="public" style="background-image: url(img/cd20a7cd6f933c29eb016cbaab5803ae-1036+101.png);">宜聊相约 快乐无限</h3>
+			<ul class="list">
+				<li class="item" style="background-image: url(img/14e75bf0c9bbe8cd3d169f694d92acd6-320+440.png);">
+					<div class="title">同城交友</div>
+				</li>
+				<li class="item" style="background-image: url(img/827cd32ce6c18141c65a509816a7df71-321+440.png);">
+					<div class="title">心灵互动</div>
+				</li>
+				<li class="item" style="background-image: url(img/393f4d9ef83fcf9ba4e0d819671539f6-321+440.png);">
+					<div class="title">情感交流</div>
+				</li>
+				<li class="item" style="background-image: url(img/bb1ee7a1ba2db90a4ec010e4ff65f44d-322+440.png);">
+					<div class="title">心理咨询</div>
+				</li>
+				<li class="item" style="background-image: url(img/8074f3fe232f9c81b1d020b2e1e07f7c-320+440.png);">
+					<div class="title">才艺表演</div>
+				</li>
+			</ul>
+		</div>
+		<div class="section">
+			<div class="title">
+				<h3>揭开网红神秘面纱 与之亲密互动</h3>
+			</div>
+			<div class="content bgeff4f7">
+				<div class="sub-title t1">
+					<h3>揭开网红神秘面纱 与之亲密互动</h3>
+				</div>
+				<div class="sub-bg bgai bg1" style="background-image: url(img/23372bf2c0766c967208076cc39073d7-660+645.png);">
+
+				</div>
+			</div>
+			<div class="content">
+				<div class="sub-title t2" style="background-image: url(img/cf1b11dde924999681d4fdfac3a430df-1315+101.png);">
+					<h3>与心仪的TA一对一私密视频 畅享二人世界 </h3>
+				</div>
+				<div class="sub-bg bgai bg2" style="background-image: url(img/cd51c0ed4e0921fc45184f4b57e4db1a-655+649.png);">
+
+				</div>
+			</div>
+		</div>
+		<div class="happy bg9c9d97">
+			<h3 class="public" style="background-image: url(img/a4ef40d29bd0f7de556e7854d4d24363-1140+101.png);">加入宜聊，下一个网红就是你</h3>
+			<img src="img/88f92435b11335ad73432d8640067e89-1756+781.png" alt="" class="full-img">
+		</div>
+	</div>
+	<div class="footer">
+		<p>版权所有 ©2018 重庆一聊高科技有限公司 | 渝ICP备18008383号 |渝网文（2018）7381-156号 | 渝公网安备50011202501406号</p>
+		<p>中国互联网不良信息举报中心 | 国家企业信用信息公示系统(重庆) | 咨询电话：023-67733367</p>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script>
+		var t1 = $('.main .section .sub-title.t1');
+		var offset_t1 = t1.offset()
+		var bg1 = $('.main .section .sub-bg.bg1')
+
+
+		var t2 = $('.main .section .sub-title.t2');
+		var offset_t2 = t2.offset()
+		var bg2 = $('.main .section .sub-bg.bg2')
+
+
+		var title = $('.main .section .title')
+		var title_height = $('.main .section .title').innerHeight();
+
+
+		var screenHeight = window.innerHeight;
+		$(window).on('scroll', function () {
+			var scrollTop = $(document).scrollTop();
+			if (scrollTop >= offset_t1.top) {
+				title.show();
+
+				t1.hide();
+
+				bg1.removeClass('bgai');
+			} else {
+				title.hide();
+
+				bg1.addClass('bgai');
+
+				t1.show();
+			}
+
+			if (scrollTop >= offset_t2.top - screenHeight) {
+				t2.hide();
+				bg2.removeClass('bgai');
+			} else {
+				t2.show();
+				bg2.addClass('bgai');
+			}
+
+			if (scrollTop >= offset_t2.top - title_height) {
+
+				var fadeOut = (offset_t2.top - scrollTop - title_height / 2) / (title_height / 2)
+				fadeOut = Math.abs((fadeOut).toFixed(2));
+				fadeOut > 1 && (fadeOut = 1);
+				title.css('opacity', fadeOut);
+
+			} else {
+				title.css('opacity', 1);
+			}
+
+			if (scrollTop >= offset_t2.top - title_height / 2) {
+				title.children('h3').text(t2.children('h3').text())
+				title.css('backgroundImage', 'url(img/cf1b11dde924999681d4fdfac3a430df-1315+101.png)');
+
+
+			} else {
+				title.children('h3').text(t1.children('h3').text())
+				title.css('backgroundImage', 'url(img/f86d96eb5b6a56badcfac9755a0fe1a1-1204+67.png)');
+			}
+
+			if (scrollTop >= offset_t2.top) {
+				title.hide()
+				t2.show()
+			} else {
+				t2.hide()
+			}
+
+			if (scrollTop >= offset_t2.top) {
+				bg2.addClass('bgai');
+			} else {
+
+			}
+
+		})
+	</script>
+</body>
+
+</html>

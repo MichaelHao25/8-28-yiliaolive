@@ -1,0 +1,1 @@
+{"C:\\Users\\doubl\\Desktop\\source\\gulpfile.js":{"sha1":"a3d4a63ff47f5e8c7c78bb98894133d53672d41d","tasks":{"serve":{"name":"serve","dependencies":"css"},"css":{"name":"css","dependencies":""},"default":{"name":"default","dependencies":"serve"},"build":{"name":"build","dependencies":""},"jpgpng":{"name":"jpgpng","dependencies":""}}}}
